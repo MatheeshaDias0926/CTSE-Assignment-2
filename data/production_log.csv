@@ -1,0 +1,101 @@
+date,line_id,product,planned_units,actual_units,defect_count,downtime_minutes,shift,operator_id
+2025-01-06,LINE-01,Drive Shaft,230,215,8,126,Morning,OP-006
+2025-01-06,LINE-02,Steering Rack,217,210,5,30,Afternoon,OP-008
+2025-01-06,LINE-03,Drive Shaft,252,147,11,82,Night,OP-001
+2025-01-06,LINE-04,Transmission Assembly,220,210,4,35,Morning,OP-009
+2025-01-06,LINE-05,Engine Block V6,278,256,4,7,Afternoon,OP-008
+2025-01-07,LINE-01,Brake Rotor Set,208,173,14,4,Night,OP-002
+2025-01-07,LINE-02,Cylinder Head,227,198,0,15,Morning,OP-006
+2025-01-07,LINE-03,Drive Shaft,268,149,9,34,Afternoon,OP-001
+2025-01-07,LINE-04,Transmission Assembly,211,171,11,7,Night,OP-009
+2025-01-07,LINE-05,Steering Rack,201,179,2,31,Morning,OP-001
+2025-01-08,LINE-01,Steering Rack,220,196,3,25,Afternoon,OP-003
+2025-01-08,LINE-02,Brake Rotor Set,227,189,13,37,Night,OP-002
+2025-01-08,LINE-03,Engine Block V6,185,123,9,108,Morning,OP-003
+2025-01-08,LINE-04,Steering Rack,287,266,5,29,Afternoon,OP-007
+2025-01-08,LINE-05,Steering Rack,211,139,8,35,Night,OP-006
+2025-01-09,LINE-01,Brake Rotor Set,190,188,1,38,Morning,OP-010
+2025-01-09,LINE-02,Cylinder Head,270,271,2,31,Afternoon,OP-009
+2025-01-09,LINE-03,Engine Block V6,211,136,12,65,Night,OP-013
+2025-01-09,LINE-04,Exhaust Manifold,190,191,2,4,Morning,OP-014
+2025-01-09,LINE-05,Cylinder Head,212,183,7,14,Afternoon,OP-011
+2025-01-10,LINE-01,Drive Shaft,206,178,15,155,Night,OP-006
+2025-01-10,LINE-02,Brake Rotor Set,203,188,5,44,Morning,OP-004
+2025-01-10,LINE-03,Cylinder Head,257,161,9,84,Afternoon,OP-015
+2025-01-10,LINE-04,Exhaust Manifold,225,179,8,18,Night,OP-010
+2025-01-10,LINE-05,Brake Rotor Set,223,189,8,18,Morning,OP-012
+2025-01-11,LINE-01,Transmission Assembly,221,214,6,26,Afternoon,OP-006
+2025-01-11,LINE-02,Exhaust Manifold,241,210,6,17,Night,OP-005
+2025-01-11,LINE-03,Brake Rotor Set,276,182,14,91,Morning,OP-003
+2025-01-11,LINE-04,Brake Rotor Set,215,208,3,2,Afternoon,OP-001
+2025-01-11,LINE-05,Transmission Assembly,193,155,14,37,Night,OP-003
+2025-01-12,LINE-01,Suspension Strut,255,229,5,22,Morning,OP-013
+2025-01-12,LINE-02,Cylinder Head,191,192,2,23,Afternoon,OP-001
+2025-01-12,LINE-03,Cylinder Head,214,143,9,98,Night,OP-008
+2025-01-12,LINE-04,Engine Block V6,193,188,4,23,Morning,OP-007
+2025-01-12,LINE-05,Suspension Strut,240,207,1,25,Afternoon,OP-003
+2025-01-13,LINE-01,Exhaust Manifold,183,162,11,13,Night,OP-011
+2025-01-13,LINE-02,Suspension Strut,253,222,4,6,Morning,OP-012
+2025-01-13,LINE-03,Drive Shaft,264,159,21,38,Afternoon,OP-006
+2025-01-13,LINE-04,Steering Rack,239,193,5,34,Night,OP-003
+2025-01-13,LINE-05,Transmission Assembly,189,188,2,23,Morning,OP-013
+2025-01-14,LINE-01,Brake Rotor Set,259,231,2,112,Afternoon,OP-010
+2025-01-14,LINE-02,Drive Shaft,229,200,6,37,Night,OP-007
+2025-01-14,LINE-03,Suspension Strut,255,154,12,112,Morning,OP-004
+2025-01-14,LINE-04,Drive Shaft,210,197,5,9,Afternoon,OP-010
+2025-01-14,LINE-05,Cylinder Head,295,228,8,26,Night,OP-014
+2025-01-15,LINE-01,Drive Shaft,259,257,5,10,Morning,OP-001
+2025-01-15,LINE-02,Brake Rotor Set,182,163,1,5,Afternoon,OP-013
+2025-01-15,LINE-03,Cylinder Head,277,190,14,74,Night,OP-007
+2025-01-15,LINE-04,Suspension Strut,225,220,3,42,Morning,OP-010
+2025-01-15,LINE-05,Transmission Assembly,180,172,4,1,Afternoon,OP-006
+2025-01-16,LINE-01,Transmission Assembly,254,204,9,18,Night,OP-014
+2025-01-16,LINE-02,Steering Rack,234,205,2,1,Morning,OP-002
+2025-01-16,LINE-03,Drive Shaft,254,158,24,70,Afternoon,OP-002
+2025-01-16,LINE-04,Exhaust Manifold,218,186,7,23,Night,OP-001
+2025-01-16,LINE-05,Exhaust Manifold,245,210,1,29,Morning,OP-014
+2025-01-17,LINE-01,Drive Shaft,232,209,7,8,Afternoon,OP-013
+2025-01-17,LINE-02,Drive Shaft,197,157,7,1,Night,OP-010
+2025-01-17,LINE-03,Suspension Strut,199,123,8,41,Morning,OP-012
+2025-01-17,LINE-04,Engine Block V6,199,192,4,38,Afternoon,OP-001
+2025-01-17,LINE-05,Exhaust Manifold,247,193,8,43,Night,OP-001
+2025-01-18,LINE-01,Exhaust Manifold,214,188,2,109,Morning,OP-003
+2025-01-18,LINE-02,Drive Shaft,286,263,1,34,Afternoon,OP-004
+2025-01-18,LINE-03,Transmission Assembly,270,169,17,62,Night,OP-008
+2025-01-18,LINE-04,Drive Shaft,216,188,0,39,Morning,OP-015
+2025-01-18,LINE-05,Suspension Strut,273,263,6,10,Afternoon,OP-014
+2025-01-19,LINE-01,Cylinder Head,186,163,15,44,Night,OP-002
+2025-01-19,LINE-02,Cylinder Head,187,167,2,24,Morning,OP-006
+2025-01-19,LINE-03,Brake Rotor Set,264,168,11,78,Afternoon,OP-010
+2025-01-19,LINE-04,Engine Block V6,194,165,10,10,Night,OP-005
+2025-01-19,LINE-05,Brake Rotor Set,180,172,5,11,Morning,OP-002
+2025-01-20,LINE-01,Suspension Strut,207,188,5,6,Afternoon,OP-015
+2025-01-20,LINE-02,Drive Shaft,290,253,12,19,Night,OP-006
+2025-01-20,LINE-03,Suspension Strut,206,125,20,56,Morning,OP-005
+2025-01-20,LINE-04,Transmission Assembly,249,233,8,29,Afternoon,OP-001
+2025-01-20,LINE-05,Suspension Strut,227,166,5,30,Night,OP-004
+2025-01-21,LINE-01,Cylinder Head,181,181,4,17,Morning,OP-009
+2025-01-21,LINE-02,Engine Block V6,272,243,5,7,Afternoon,OP-015
+2025-01-21,LINE-03,Suspension Strut,290,180,10,61,Night,OP-002
+2025-01-21,LINE-04,Engine Block V6,208,204,7,11,Morning,OP-012
+2025-01-21,LINE-05,Suspension Strut,265,241,4,4,Afternoon,OP-013
+2025-01-22,LINE-01,Transmission Assembly,238,211,9,173,Night,OP-011
+2025-01-22,LINE-02,Cylinder Head,238,236,4,39,Morning,OP-001
+2025-01-22,LINE-03,Exhaust Manifold,249,176,10,109,Afternoon,OP-007
+2025-01-22,LINE-04,Brake Rotor Set,186,170,8,35,Night,OP-015
+2025-01-22,LINE-05,Brake Rotor Set,214,207,1,15,Morning,OP-006
+2025-01-23,LINE-01,Transmission Assembly,296,262,2,32,Afternoon,OP-010
+2025-01-23,LINE-02,Drive Shaft,220,175,14,11,Night,OP-013
+2025-01-23,LINE-03,Drive Shaft,286,175,15,110,Morning,OP-013
+2025-01-23,LINE-04,Steering Rack,186,164,7,44,Afternoon,OP-009
+2025-01-23,LINE-05,Steering Rack,283,237,11,36,Night,OP-012
+2025-01-24,LINE-01,Engine Block V6,199,175,3,1,Morning,OP-014
+2025-01-24,LINE-02,Transmission Assembly,276,248,2,1,Afternoon,OP-007
+2025-01-24,LINE-03,Engine Block V6,218,149,16,49,Night,OP-002
+2025-01-24,LINE-04,Drive Shaft,184,161,5,6,Morning,OP-015
+2025-01-24,LINE-05,Exhaust Manifold,268,256,2,20,Afternoon,OP-002
+2025-01-25,LINE-01,Steering Rack,224,176,11,44,Night,OP-009
+2025-01-25,LINE-02,Cylinder Head,201,198,5,14,Morning,OP-009
+2025-01-25,LINE-03,Cylinder Head,294,178,8,48,Afternoon,OP-011
+2025-01-25,LINE-04,Suspension Strut,181,159,6,8,Night,OP-010
+2025-01-25,LINE-05,Brake Rotor Set,258,220,1,38,Morning,OP-013
