@@ -3,13 +3,15 @@ Optimization Strategist Agent
 ===============================
 Worker agent that formulates actionable improvement plans based on
 bottleneck analysis and writes the final optimisation report.
+
+Note: Uses direct tool invocation (not bind_tools) because llama3:8b
+does not support native tool calling.
 """
 
 from typing import Any
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
-from langgraph.prebuilt import ToolNode
 
 from config import OLLAMA_MODEL, OLLAMA_BASE_URL, TEMPERATURE
 from logger import get_logger, log_agent_action
@@ -19,18 +21,14 @@ from tools.report_tools import write_optimization_report
 
 _logger = get_logger("OptimizationStrategist")
 
-# Tools available to this agent
-OPTIMIZATION_TOOLS = [write_optimization_report]
-
 
 def _get_llm() -> ChatOllama:
-    """Instantiate the Ollama LLM with report tools bound."""
-    llm = ChatOllama(
+    """Instantiate the Ollama LLM (no tool binding — llama3:8b unsupported)."""
+    return ChatOllama(
         model=OLLAMA_MODEL,
         base_url=OLLAMA_BASE_URL,
         temperature=TEMPERATURE,
     )
-    return llm.bind_tools(OPTIMIZATION_TOOLS)
 
 
 def optimization_strategist_node(state: FactoryState) -> dict[str, Any]:
@@ -49,7 +47,7 @@ def optimization_strategist_node(state: FactoryState) -> dict[str, Any]:
     """
     log_agent_action(_logger, "OptimizationStrategist", "started", {})
 
-    llm_with_tools = _get_llm()
+    llm = _get_llm()
     trace = list(state.get("agent_trace", []))
     completed = list(state.get("completed_tasks", []))
     bottleneck_findings = state.get("bottleneck_findings", "No findings available.")
@@ -67,13 +65,11 @@ def optimization_strategist_node(state: FactoryState) -> dict[str, Any]:
             f"2. Critical Issues\n"
             f"3. Recommended Actions (numbered, specific)\n"
             f"4. Resource Requirements\n"
-            f"5. Implementation Timeline\n\n"
-            f"After creating the plan, use the write_optimization_report tool "
-            f"to save it."
+            f"5. Implementation Timeline\n"
         )),
     ]
 
-    response = llm_with_tools.invoke(messages)
+    response = llm.invoke(messages)
     optimization_plan = response.content.strip()
 
     log_agent_action(
@@ -81,7 +77,7 @@ def optimization_strategist_node(state: FactoryState) -> dict[str, Any]:
         {"plan_length": len(optimization_plan)},
     )
 
-    # ── Step 2: Write the report (direct tool call as fallback) ─────────
+    # ── Step 2: Write the report (direct tool call) ─────────────────────
     # Determine priority from bottleneck findings
     priority = _determine_priority(bottleneck_findings)
 

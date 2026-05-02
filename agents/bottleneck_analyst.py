@@ -3,6 +3,9 @@ Bottleneck Analyst Agent
 =========================
 Worker agent that analyses PTP efficiency, checks inventory levels,
 and identifies production bottlenecks.
+
+Note: Uses direct tool invocation (not bind_tools) because llama3:8b
+does not support native tool calling.
 """
 
 import json
@@ -10,7 +13,6 @@ from typing import Any
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
-from langgraph.prebuilt import ToolNode
 
 from config import OLLAMA_MODEL, OLLAMA_BASE_URL, TEMPERATURE
 from logger import get_logger, log_agent_action
@@ -21,18 +23,14 @@ from tools.inventory_tools import query_inventory_db
 
 _logger = get_logger("BottleneckAnalyst")
 
-# Tools available to this agent
-ANALYSIS_TOOLS = [calculate_ptp_efficiency, query_inventory_db]
-
 
 def _get_llm() -> ChatOllama:
-    """Instantiate the Ollama LLM with analysis tools bound."""
-    llm = ChatOllama(
+    """Instantiate the Ollama LLM (no tool binding — llama3:8b unsupported)."""
+    return ChatOllama(
         model=OLLAMA_MODEL,
         base_url=OLLAMA_BASE_URL,
         temperature=TEMPERATURE,
     )
-    return llm.bind_tools(ANALYSIS_TOOLS)
 
 
 def bottleneck_analyst_node(state: FactoryState) -> dict[str, Any]:
@@ -53,7 +51,7 @@ def bottleneck_analyst_node(state: FactoryState) -> dict[str, Any]:
     """
     log_agent_action(_logger, "BottleneckAnalyst", "started", {})
 
-    llm_with_tools = _get_llm()
+    llm = _get_llm()
     trace = list(state.get("agent_trace", []))
     completed = list(state.get("completed_tasks", []))
     production_data = state.get("production_data", {})
@@ -97,7 +95,7 @@ def bottleneck_analyst_node(state: FactoryState) -> dict[str, Any]:
         )),
     ]
 
-    response = llm_with_tools.invoke(messages)
+    response = llm.invoke(messages)
     bottleneck_findings = response.content.strip()
 
     completed.append("bottleneck_analysis")
