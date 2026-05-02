@@ -65,7 +65,7 @@ async function checkHealth() {
         } else {
             setOffline();
         }
-    } catch {
+    } catch (e) {
         setOffline();
     }
 }
@@ -85,7 +85,7 @@ async function loadDataSummary() {
             els.statLines().textContent = data.production_lines.length;
             els.statDowntime().textContent = `${data.total_downtime}m`;
         }
-    } catch {
+    } catch (e) {
         /* silent */
     }
 }
