@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Smart Factory Multi-Agent System — AI-powered production analysis and optimization dashboard" />
+    <title>Smart Factory MAS — Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>" />
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- ═══ Header ═══ -->
+        <header class="header">
+            <div class="header-left">
+                <h1>🏭 Smart Factory MAS</h1>
+                <p>Multi-Agent Production &amp; Efficiency Optimizer</p>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">Checking Ollama...</span>
+            </div>
+        </header>
+
+        <!-- ═══ Query Panel ═══ -->
+        <section class="card query-panel">
+            <div class="card-title"><span class="icon">📋</span> Analysis Query</div>
+            <div class="query-input-wrap">
+                <input
+                    type="text"
+                    class="query-input"
+                    id="query-input"
+                    placeholder="Enter your production analysis query..."
+                />
+                <button class="btn btn-primary" id="run-btn">🚀 Run Analysis</button>
+            </div>
+            <div class="timer hidden" id="timer">⏱ 0.0s</div>
+        </section>
+
+        <!-- ═══ Agent Pipeline ═══ -->
+        <section class="card pipeline-panel">
+            <div class="card-title"><span class="icon">⚡</span> Agent Pipeline</div>
+            <div class="pipeline">
+                <div class="pipeline-step idle" data-agent="data_retrieval">
+                    <div class="step-icon">📂</div>
+                    <div class="step-name">Data Retrieval</div>
+                    <div class="step-status">Waiting...</div>
+                </div>
+                <div class="pipeline-step idle" data-agent="bottleneck_analyst">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-name">Bottleneck Analyst</div>
+                    <div class="step-status">Waiting...</div>
+                </div>
+                <div class="pipeline-step idle" data-agent="optimization_strategist">
+                    <div class="step-icon">💡</div>
+                    <div class="step-name">Optimization</div>
+                    <div class="step-status">Waiting...</div>
+                </div>
+                <div class="pipeline-step idle" data-agent="synthesizer">
+                    <div class="step-icon">📊</div>
+                    <div class="step-name">Synthesizer</div>
+                    <div class="step-status">Waiting...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ Stats Grid ═══ -->
+        <section class="stats-grid" id="stats-section">
+            <div class="card stat-card">
+                <div class="stat-value" id="stat-records">—</div>
+                <div class="stat-label">Production Records</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value" id="stat-lines">—</div>
+                <div class="stat-label">Production Lines</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value" id="stat-downtime">—</div>
+                <div class="stat-label">Total Downtime</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value" id="stat-elapsed">—</div>
+                <div class="stat-label">Analysis Time</div>
+            </div>
+        </section>
+
+        <!-- ═══ Results Section ═══ -->
+        <section class="results-grid hidden" id="results-section">
+
+            <!-- PTP Analysis Table -->
+            <div class="card">
+                <div class="card-title"><span class="icon">📈</span> PTP Efficiency Analysis</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Line ID</th>
+                            <th>PTP %</th>
+                            <th>Planned</th>
+                            <th>Actual</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ptp-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- Inventory Alerts -->
+            <div class="card">
+                <div class="card-title"><span class="icon">⚠️</span> Low-Stock Inventory Alerts</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Stock</th>
+                            <th>Minimum</th>
+                            <th>Deficit</th>
+                            <th>Supplier</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- Bottleneck Findings -->
+            <div class="card hidden" id="findings-card">
+                <div class="card-title"><span class="icon">🔍</span> Bottleneck Findings</div>
+                <div class="report-content" id="bottleneck-findings"></div>
+            </div>
+
+            <!-- Final Report -->
+            <div class="card hidden" id="report-card">
+                <div class="card-title"><span class="icon">📄</span> Executive Summary &amp; Optimization Plan</div>
+                <div class="report-content" id="report-content"></div>
+            </div>
+        </section>
+
+        <!-- ═══ Evaluation Section ═══ -->
+        <section class="card hidden" id="eval-section">
+            <div class="card-title">
+                <span class="icon">📋</span> LLM-as-a-Judge Evaluation
+                <button class="btn btn-secondary" id="eval-btn" style="margin-left:auto;padding:0.5rem 1rem;font-size:0.8rem;">
+                    📋 Run Evaluation
+                </button>
+            </div>
+            <div class="eval-scores" id="eval-scores"></div>
+            <div class="eval-overall">
+                <div class="eval-overall-score" id="eval-overall-score">—</div>
+                <div class="eval-overall-label">Overall Score</div>
+            </div>
+            <p class="hidden" id="eval-summary" style="margin-top:1rem;color:var(--text-secondary);font-size:0.85rem;text-align:center;"></p>
+        </section>
+
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
